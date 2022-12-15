@@ -18,8 +18,9 @@ public class Login {
     public void setUp() {
         // настройки браузера
         String env = "test";
+        String size = "callcenter";
         browser = Properties.getProperty("chrome");
-        browserSize = Properties.getProperty("mobile_a22");
+        browserSize = Properties.getProperty(size);
         headless = false;
         //baseUrl = "https://magportal-dev-magfront-stage.apps.lmru.tech/orders/orders_v2";
 
@@ -34,7 +35,7 @@ public class Login {
 
         //MainPage.watsNewPopupClose(); //TODO Сделать ветвление, когда не открывается окно
 
-        if (browserSize != "normal") { //если разрешение низкое и требуется нажать кнопку доступа к меню слева
+        if (!(size.equals("normal"))) { //если разрешение низкое и требуется нажать кнопку доступа к меню слева
             MainPage.openLeftMenu();
         }
 
