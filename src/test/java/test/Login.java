@@ -22,9 +22,9 @@ public class Login {
         browser = Properties.getProperty("chrome");
         browserSize = Properties.getProperty(size);
 
-        baseUrl = "https://magportal-preprod-magfront-stage.apps.lmru.tech/orders/orders_v2";
+        baseUrl = Properties.getProperty(env);
 
-        open();
+        open("/");
 
         // открытие страницы с заказами
         String ldap = Properties.getProperty("ldap");
