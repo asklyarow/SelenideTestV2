@@ -1,14 +1,13 @@
 package test;
 
-import com.codeborne.selenide.Configuration;
+
 import org.testng.annotations.*;
 import pages.LoginPage;
 import pages.MainPage;
 import pages.Properties;
 
-import java.time.Duration;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Configuration.*;
 
 
@@ -17,14 +16,15 @@ public class Login {
     @BeforeClass
     public void setUp() {
         // настройки браузера
-        String env = "test";
-        String size = "callcenter";
+        String env = "preprod";
+        String size = "normal";
+        headless = false;
         browser = Properties.getProperty("chrome");
         browserSize = Properties.getProperty(size);
-        headless = false;
-        //baseUrl = "https://magportal-dev-magfront-stage.apps.lmru.tech/orders/orders_v2";
 
-        open(Properties.getProperty(env));
+        baseUrl = "https://magportal-preprod-magfront-stage.apps.lmru.tech/orders/orders_v2";
+
+        open();
 
         // открытие страницы с заказами
         String ldap = Properties.getProperty("ldap");
