@@ -21,10 +21,9 @@ public class Login {
         headless = false;
         browser = Properties.getProperty("chrome");
         browserSize = Properties.getProperty(size);
-
         baseUrl = Properties.getProperty(env);
 
-        open("/");
+        open(baseUrl);
 
         // открытие страницы с заказами
         String ldap = Properties.getProperty("ldap");
@@ -33,7 +32,7 @@ public class Login {
 
         LoginPage.loginLdap(ldap, pass);
 
-        //MainPage.watsNewPopupClose(); //TODO Сделать ветвление, когда не открывается окно
+        MainPage.watsNewPopupClose(); //TODO Сделать ветвление, когда не открывается окно
 
         if (!(size.equals("normal"))) { //если разрешение низкое и требуется нажать кнопку доступа к меню слева
             MainPage.openLeftMenu();
