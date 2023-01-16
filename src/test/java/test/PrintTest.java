@@ -12,7 +12,8 @@ public class PrintTest extends Login{
         String currentOrderId = "221204700520";
         open(currentOrderId);
 
-
         HeaderPage.chekOrderNumber(currentOrderId);
+
+
     }
 }
