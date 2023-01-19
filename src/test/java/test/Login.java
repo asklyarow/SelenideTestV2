@@ -1,7 +1,9 @@
 package test;
 
 
+import com.codeborne.selenide.Condition;
 import org.testng.annotations.*;
+import pages.HeaderPage;
 import pages.LoginPage;
 import pages.MainPage;
 import pages.Properties;
@@ -37,6 +39,7 @@ public class Login {
         String user = Properties.getProperty("username");
 
         LoginPage.loginLdap(ldap, pass);
+
 
         MainPage.watsNewPopupClose(); //TODO Сделать ветвление, когда не открывается окно
 

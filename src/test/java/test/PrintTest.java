@@ -1,7 +1,9 @@
 package test;
 
+import com.codeborne.selenide.*;
 import org.testng.annotations.Test;
 import pages.HeaderPage;
+import pages.modal.CloudPrintPage;
 
 import static com.codeborne.selenide.Selenide.*;
 
@@ -12,7 +14,21 @@ public class PrintTest extends Login{
         String currentOrderId = "221204700520";
         open(currentOrderId);
 
-        HeaderPage.chekOrderNumber(currentOrderId);
+        HeaderPage.chekOrderNumber(currentOrderId); //верный ли заказ открыт?
+
+        HeaderPage.printOrderIcon.click();
+        HeaderPage.cloudPrintButton.click();
+        CloudPrintPage.modalName.shouldHave();
+
+        CloudPrintPage.prinerNameBtn.click();
+        CloudPrintPage.newPrinterNameBtn.click();
+        CloudPrintPage.newPrinterNameBtn.shouldHave();
+        CloudPrintPage.printBtn.shouldHave();
+        //TODO ПРОВЕРКИ ПРОХОДЯТ ВСЕГДА, ИСПРАВИТЬ
+
+        CloudPrintPage.newPrinterNameBtn.click();
+        HeaderPage.printOrderIcon.shouldHave();
+        CloudPrintPage.prinerNameBtn.shouldHave(Condition.visible);
 
 
     }
