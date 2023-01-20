@@ -10,6 +10,7 @@ import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
+
 public class MainPage {
 
     public static SelenideElement
@@ -17,6 +18,7 @@ public class MainPage {
             leftAreaBtn = $x("//button[@data-testid='lmui-ScreenHeader-LeftAreaBtn-button']");
 
     public static void watsNewPopupClose() {
+       // if (MainPage.whatsNew.waitWhile(30000))
         whatsNew.shouldBe(visible, Duration.ofSeconds(15)).click();
 
     }

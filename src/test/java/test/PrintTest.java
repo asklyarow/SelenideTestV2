@@ -3,6 +3,7 @@ package test;
 import com.codeborne.selenide.*;
 import org.testng.annotations.Test;
 import pages.HeaderPage;
+import pages.LoginPage;
 import pages.modal.CloudPrintPage;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -23,7 +24,7 @@ public class PrintTest extends Login{
         CloudPrintPage.prinerNameBtn.click();
         CloudPrintPage.newPrinterNameBtn.click();
         CloudPrintPage.newPrinterNameBtn.shouldHave();
-        CloudPrintPage.printBtn.shouldHave();
+
         //TODO ПРОВЕРКИ ПРОХОДЯТ ВСЕГДА, ИСПРАВИТЬ
 
         CloudPrintPage.newPrinterNameBtn.click();

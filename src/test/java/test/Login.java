@@ -43,7 +43,8 @@ public class Login {
 
         MainPage.watsNewPopupClose(); //TODO Сделать ветвление, когда не открывается окно
 
-        if (!browserSize.equals("1920x1080")) MainPage.openLeftMenu();
+        if (MainPage.leftAreaBtn.isDisplayed()) MainPage.openLeftMenu();
+        //if (!browserSize.equals("1920x1080")) MainPage.openLeftMenu();
          //если разрешение низкое и требуется нажать кнопку доступа к меню слева
 
 
