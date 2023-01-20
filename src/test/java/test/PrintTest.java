@@ -1,8 +1,9 @@
 package test;
 
-import com.codeborne.selenide.*;
+import static com.codeborne.selenide.Condition.*;
 import org.testng.annotations.Test;
 import pages.HeaderPage;
+import pages.InfoTabPage;
 import pages.LoginPage;
 import pages.modal.CloudPrintPage;
 
@@ -23,13 +24,11 @@ public class PrintTest extends Login{
 
         CloudPrintPage.prinerNameBtn.click();
         CloudPrintPage.newPrinterNameBtn.click();
-        CloudPrintPage.newPrinterNameBtn.shouldHave();
-
-        //TODO ПРОВЕРКИ ПРОХОДЯТ ВСЕГДА, ИСПРАВИТЬ
+        CloudPrintPage.newPrinterNameBtn.shouldHave(visible);
 
         CloudPrintPage.newPrinterNameBtn.click();
-        HeaderPage.printOrderIcon.shouldHave();
-        CloudPrintPage.prinerNameBtn.shouldHave(Condition.visible);
+        HeaderPage.printOrderIcon.shouldHave(visible);
+        CloudPrintPage.prinerNameBtn.shouldHave(visible);
 
 
     }
