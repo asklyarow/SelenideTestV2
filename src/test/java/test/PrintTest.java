@@ -10,6 +10,7 @@ import static com.codeborne.selenide.Condition.*;
 
 public class PrintTest extends Login{
 
+    //@BeforeClass
     @BeforeMethod
     private void OpenOrder() {
         String currentOrderId = "221204700520";
@@ -34,7 +35,7 @@ public class PrintTest extends Login{
         CloudPrintPage.printBtn.shouldBe(visible).shouldBe(text("Напечатать"));
         CloudPrintPage.printerNameBtn.click();
         CloudPrintPage.backBtn.click();
-        CloudPrintPage.cloudPrintModal.shouldBe(visible).shouldBe(text("Другие"));
+        CloudPrintPage.cloudPrintModal.shouldBe(visible).shouldNot(text("Выбор принтера"));
         CloudPrintPage.closeModal.click();
         CloudPrintPage.cloudPrintModal.shouldBe(disappear);
     }
