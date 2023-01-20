@@ -23,13 +23,13 @@ public class CloudPrintPage {
         return $x("//span[contains(.,'" + printname + "')]");}
 
     public static void setNewPrinter(String printname, String section) {
-        
+
         HeaderPage.printOrderIcon.click();      //открытие попапа Облачной печати
         HeaderPage.cloudPrintButton.click();
         CloudPrintPage.cloudPrintModal.shouldBe(visible).shouldBe(text("Другие"));
         CloudPrintPage.printerNameBtn.click();               //переход к модальному окну выбора принтера и выбор нового принтера
         CloudPrintPage.cloudPrintModal.shouldBe(visible).shouldBe(text("Выбор принтера"));
-        CloudPrintPage.newPrinterNameBtn(printname);
+        CloudPrintPage.newPrinterNameBtn(printname).click();
         CloudPrintPage.cloudPrintModal.shouldBe(visible).shouldBe(text(section));
         CloudPrintPage.closeModal.click();
         CloudPrintPage.cloudPrintModal.shouldBe(disappear);
