@@ -27,6 +27,6 @@ public class HeaderPage {
 
 
     public static void chekOrderNumber(String order) {
-        numberOrder.shouldHave(value(order),Duration.ofSeconds(10));
+        numberOrder.shouldBe(value(order),Duration.ofSeconds(10));
     }
 }

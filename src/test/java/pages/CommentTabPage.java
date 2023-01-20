@@ -4,7 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class CommentTabPage {
@@ -22,8 +22,8 @@ public class CommentTabPage {
         commentInputFld.setValue(comm).pressEnter();
     }
 
-    public static void chekEnterComment (String comm) {
-        commentList.shouldHave(visible.text(comm));
+    public void chekEnterComment (String comm) {
+        commentList.shouldBe(visible).shouldBe(text(comm));
     }
 
     public static void getQntComm () { }//TODO Разобраться, как получать и присваивать переменным данные
