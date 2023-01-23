@@ -3,7 +3,7 @@ package test;
 
 import org.testng.annotations.*;
 import pages.HeaderPage;
-import pages.modal.ChangeCustomerPage;
+import pages.modal.ChangeCustomerModal;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Condition.*;
@@ -21,8 +21,8 @@ public class HeaderTest {
     @Test
     private void ChangeCustomerIcon(){
         HeaderPage.customerNumberIcon.click();
-        ChangeCustomerPage.modalWindow.shouldBe(visible).shouldBe(text("Укажите клиента"));
-        ChangeCustomerPage.saveBtn.shouldBe(disabled);
+        ChangeCustomerModal.modalWindow.shouldBe(visible).shouldBe(text("Укажите клиента"));
+        ChangeCustomerModal.saveBtn.shouldBe(disabled);
 
 
     }

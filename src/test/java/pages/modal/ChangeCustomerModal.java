@@ -4,7 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class ChangeCustomerPage {
+public class ChangeCustomerModal {
 
     public static SelenideElement
         modalWindow = $x("//div[@data-testid='modal-window']"),
