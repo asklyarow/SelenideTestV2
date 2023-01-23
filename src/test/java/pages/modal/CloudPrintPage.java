@@ -12,11 +12,11 @@ public class CloudPrintPage {
 
     public static SelenideElement
             cloudPrintModal = $x("//div[@data-testid='modal-window']"), //div[@data-testid='modal_title-mobile-caption']
+            closeModal = $x("//button[@aria-label='Close modal']"),
             printerNameBtn = $x("//span[contains(.,'S035P-CHOP-001')]"),
             newPrinterNameBtn = $x("//span[contains(.,'S035P-VEN04-001')]"),
             printBtn = $x("//button[contains(.,'Напечатать')]"),
         //TODO Подумать, как кнопку закрыть попап описать (есть дубль)
-            closeModal = $x("//button[@aria-label='Close modal']"),
             backBtn = $x("//div[@data-testid='modal-window']//div[@class='lmui-View']//button[@type='button']");
 
     public static SelenideElement newPrinterNameBtn (String printname) {

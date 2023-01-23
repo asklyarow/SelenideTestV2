@@ -24,6 +24,7 @@ public class PrintTest extends Login{
 
         HeaderPage.printOrderIcon.click();
         HeaderPage.cloudPrintButton.click();
+        //TODO Добавить проверку открытия окна
         CloudPrintPage.printerNameBtn.click();
         CloudPrintPage.cloudPrintModal.shouldBe(visible).shouldBe(text("Выбор принтера"));
         CloudPrintPage.closeModal.click();

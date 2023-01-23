@@ -9,8 +9,6 @@ import pages.MainPage;
 import pages.Properties;
 
 
-import java.io.InputStream;
-
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Configuration.*;
 
@@ -28,8 +26,6 @@ public class Login {
             browser = Properties.getProperty("chrome");
             browserSize = Properties.getProperty(size);
             baseUrl = Properties.getProperty(env);
-
-
 
         open(baseUrl);
 
