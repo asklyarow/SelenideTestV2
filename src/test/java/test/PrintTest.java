@@ -1,6 +1,7 @@
 package test;
 
 
+import org.apache.commons.lang3.builder.ToStringExclude;
 import org.testng.annotations.*;
 import pages.HeaderPage;
 import pages.modal.CloudPrintModal;
@@ -46,5 +47,6 @@ public class PrintTest extends Login{
         CloudPrintModal.setNewPrinter(printname,section);
     }
 
+    //TODO написать проверки с открытием ПДФ
 
 }

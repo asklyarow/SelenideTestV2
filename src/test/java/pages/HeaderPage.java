@@ -12,9 +12,9 @@ public class HeaderPage {
 
     public static SelenideElement
         numberOrder = $x("//input[contains(@class, 'CopyToClipboardButton__input')]"),
-        customerNumberIcon = $("customer-number-edit-btn"),
-        copyOrderIcon = $("create-cart-btn"),
-        barCodeIcon = $("barcode-btn"),
+        customerNumberIcon = $("#customer-number-edit-btn"),
+        copyOrderIcon = $("#create-cart-btn"),
+        barCodeIcon = $("#barcode-btn"),
         printOrderIcon = $x("//button[@data-testid='aao-print-order-btn']"),
             cloudPrintButton = $("#printOrderBlankCloudPrint"),
             printOrderInfo = $("#printOrderInfo"),
@@ -22,8 +22,10 @@ public class HeaderPage {
             printStickerPaper = $("#printStickerPaper"),
             printStickerPdf = $("#printStickerPdf"),
             printLabel = $("#printLabel"),
-        cancelOrderIcon = $("#cancel-order-btn");
+        cancelOrderIcon = $("#cancel-order-btn"),
 
+        clientWiget = $x("//div[@class='lmui-View lm-puz2-Order-OrderCustomerCommon']"),
+            clientName = $x("//span[@class='node_modules-fronton-react-typography-styles-module__typography--gU4V0 node_modules-fronton-react-typography-styles-module___m--NTpK1 lm-clients-CustomerControl-ViewCard__link_text node_modules-fronton-react-typography-styles-module__body_accent--GPIDO']");
 
 
     public static void chekOrderNumber(String order) {
