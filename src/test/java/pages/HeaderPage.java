@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import pages.modal.ChangeCustomerModal;
 import pages.modal.CloudPrintModal;
 
 import java.time.Duration;
@@ -40,8 +41,19 @@ public class HeaderPage {
     }
 
     public static void openCloudPrintModal() {
-        HeaderPage.printOrderIcon.click();
-        HeaderPage.cloudPrintButton.click();
+        printOrderIcon.click();
+        cloudPrintButton.click();
         CloudPrintModal.cloudPrintModal.shouldBe(visible).shouldBe(text("Облачная печать").because("Не открыт попап с наименованием 'Облачная печать'"));
     }
+
+    public static void openChangeCustomerModal() {
+        customerNumberIcon.click();
+        ChangeCustomerModal.modalWindow.shouldBe(visible)
+                .shouldBe(text("Укажите клиента"))
+                .shouldBe(text("Укажите значение номера клиента"));
+        ChangeCustomerModal.input.shouldBe(visible);
+        ChangeCustomerModal.cancelBtn.shouldBe(enabled);
+        ChangeCustomerModal.saveBtn.shouldBe(disabled);
+    }
+
 }

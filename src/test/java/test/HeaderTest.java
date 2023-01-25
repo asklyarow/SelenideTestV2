@@ -27,51 +27,26 @@ public class HeaderTest extends Login {
     private void ChangeCustomerTest(){
 
         step("Кликнуть на иконку смены клиента", () -> {
-                    HeaderPage.customerNumberIcon.click();
-                    ChangeCustomerModal.modalWindow.shouldBe(visible)
-                            .shouldBe(text("Укажите клиента"))
-                            .shouldBe(text("Укажите значение номера клиента"));
-                    ChangeCustomerModal.input.shouldBe(visible);
-                    ChangeCustomerModal.cancelBtn.shouldBe(enabled);
-                    ChangeCustomerModal.saveBtn.shouldBe(disabled);
+            HeaderPage.openChangeCustomerModal();
                 });
         step("Ввести буквы и спецсимволы", () -> {
-            ChangeCustomerModal.input.setValue("345ffdv");
-            ChangeCustomerModal.saveBtn.shouldBe(disabled);
-            ChangeCustomerModal.modalWindow.shouldBe(text("Номер клиента должен содержать только цифры"));
+            ChangeCustomerModal.setInput(ChangeCustomerModal.invalidCustomerId);
                 });
         step("Очистить поле", () -> {
-                    ChangeCustomerModal.input.click();
-                    ChangeCustomerModal.input.sendKeys(Keys.CONTROL + "a");
-                    ChangeCustomerModal.input.sendKeys(Keys.DELETE);
+            ChangeCustomerModal.clearFld();
                 });
         step("Ввести существующий CustomerNumber, отличный от настоящего в заказе", () -> {
-            //ChangeCustomerModal.input.clear();
-            ChangeCustomerModal.saveBtn.shouldBe(disabled);
-            ChangeCustomerModal.modalWindow.shouldBe(text("Укажите значение номера клиента"));
-
-            ChangeCustomerModal.input.setValue("145955445");
-            ChangeCustomerModal.saveBtn.shouldBe(enabled);
+            ChangeCustomerModal.setInput(ChangeCustomerModal.validCustomerId);
                 });
         step("Кликнуть на Отмена", () -> {
-                    ChangeCustomerModal.cancelBtn.click();
-                    ChangeCustomerModal.modalWindow.shouldNot(visible);
+            ChangeCustomerModal.clickCancelBtn();
                 });
         step("Ввести существующий CustomerNumber и сохранить", () -> {
-                    HeaderPage.customerNumberIcon.click();
-                    ChangeCustomerModal.modalWindow.shouldBe(visible)
-                            .shouldBe(text("Укажите клиента"))
-                            .shouldBe(text("Укажите значение номера клиента"));
-
-                    ChangeCustomerModal.input.setValue("145955445"); //TODO сделать возможность выбора дев и препрод
-                    ChangeCustomerModal.saveBtn.shouldBe(enabled);
-
-                    ChangeCustomerModal.saveBtn.click();
-                    ChangeCustomerModal.modalWindow.shouldNot(visible);
-                    HeaderPage.clientWidget.shouldBe(text("тестИ тестА"));
+            HeaderPage.openChangeCustomerModal();
+            ChangeCustomerModal.setInput(ChangeCustomerModal.validCustomerId);
+            ChangeCustomerModal.clickSaveBtn();
+            ChangeCustomerModal.chekSaveChangeCustomer();
                 });
 
-
-            //TODO добавить проверки истории заказа
     }
 }
