@@ -1,7 +1,6 @@
 package test;
 
 
-import com.codeborne.selenide.commands.Clear;
 import org.openqa.selenium.Keys;
 import org.testng.annotations.*;
 import pages.HeaderPage;
@@ -38,7 +37,7 @@ public class HeaderTest extends Login {
         ChangeCustomerModal.input.click();
         ChangeCustomerModal.input.sendKeys(Keys.CONTROL + "a");
         ChangeCustomerModal.input.sendKeys(Keys.DELETE);
-        ChangeCustomerModal.input.clear();
+        //ChangeCustomerModal.input.clear();
             ChangeCustomerModal.saveBtn.shouldBe(disabled);
             ChangeCustomerModal.modalWindow.shouldBe(text("Укажите значение номера клиента"));
 
@@ -58,7 +57,7 @@ public class HeaderTest extends Login {
 
         ChangeCustomerModal.saveBtn.click();
             ChangeCustomerModal.modalWindow.shouldNot(visible);
-            HeaderPage.clientWiget.shouldBe(text("тестИ тестА"));
+            HeaderPage.clientWidget.shouldBe(text("тестИ тестА"));
 
 
             //TODO добавить проверки истории заказа

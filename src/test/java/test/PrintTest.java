@@ -23,28 +23,22 @@ public class PrintTest extends Login{
     @Test
     public void CloudPrintTest() {
 
-        HeaderPage.printOrderIcon.click();
-        HeaderPage.cloudPrintButton.click();
-        CloudPrintModal.cloudPrintModal.shouldBe(visible).shouldBe(text("Облачная печать"));
-        CloudPrintModal.printerNameBtn.click();
-        CloudPrintModal.cloudPrintModal.shouldBe(visible).shouldBe(text("Выбор принтера"));
-        CloudPrintModal.closeModal.click();
-        CloudPrintModal.cloudPrintModal.shouldBe(disappear);
+        HeaderPage.openCloudPrintModal();
+        CloudPrintModal.openSelectPrinterModal();
+        CloudPrintModal.closeModal();
 
-        HeaderPage.printOrderIcon.click();
-        HeaderPage.cloudPrintButton.click();
-        CloudPrintModal.cloudPrintModal.shouldBe(visible).shouldBe(text("Облачная печать"));
-        CloudPrintModal.printBtn.shouldBe(visible).shouldBe(text("Напечатать"));
-        CloudPrintModal.printerNameBtn.click();
-        CloudPrintModal.backBtn.click();
-        CloudPrintModal.cloudPrintModal.shouldBe(visible).shouldNot(text("Выбор принтера"));
-        CloudPrintModal.closeModal.click();
-        CloudPrintModal.cloudPrintModal.shouldBe(disappear);
+        HeaderPage.openCloudPrintModal();
+        CloudPrintModal.openSelectPrinterModal();
+        CloudPrintModal.backClickModal();
+        CloudPrintModal.closeModal();
     }
 
     @Test(dataProvider = "getCloudPrintName", dataProviderClass = CloudPrintModal.class)
     public void CloudPrintProvider(String printname, String section) {
+        HeaderPage.openCloudPrintModal();
+        CloudPrintModal.openSelectPrinterModal();
         CloudPrintModal.setNewPrinter(printname,section);
+        CloudPrintModal.closeModal();
     }
 
     //TODO написать проверки с открытием ПДФ

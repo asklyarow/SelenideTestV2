@@ -13,23 +13,32 @@ public class CloudPrintModal {
             cloudPrintModal = $x("//div[@data-testid='modal-window']"), //div[@data-testid='modal_title-mobile-caption']
             closeModal = $x("//button[@aria-label='Close modal']"),
             printerNameBtn = $x("//span[contains(.,'S035P-CHOP-001')]"),
+
             printBtn = $x("//button[contains(.,'Напечатать')]"),
             backBtn = $x("//div[@data-testid='modal-window']//div[@class='lmui-View']//button[@type='button']");
 
     public static SelenideElement newPrinterNameBtn (String printname) {
         return $x("//span[contains(.,'" + printname + "')]");}
 
-    public static void setNewPrinter(String printname, String section) {
 
-        HeaderPage.printOrderIcon.click();      //открытие попапа Облачной печати
-        HeaderPage.cloudPrintButton.click();
-        CloudPrintModal.cloudPrintModal.shouldBe(visible).shouldBe(text("Облачная печать"));
-        CloudPrintModal.printerNameBtn.click();               //переход к модальному окну выбора принтера и выбор нового принтера
-        CloudPrintModal.cloudPrintModal.shouldBe(visible).shouldBe(text("Выбор принтера"));
-        CloudPrintModal.newPrinterNameBtn(printname).click();
-        CloudPrintModal.cloudPrintModal.shouldBe(visible).shouldBe(text(section));
-        CloudPrintModal.closeModal.click();
-        CloudPrintModal.cloudPrintModal.shouldBe(disappear);
+    public static void openSelectPrinterModal() {
+        printerNameBtn.click();               //переход к модальному окну выбора принтера и выбор нового принтера
+        cloudPrintModal.shouldBe(visible).shouldBe(text("Выбор принтера"));
+    }
+
+    public static void setNewPrinter(String printname, String section) {
+        newPrinterNameBtn(printname).click();
+        cloudPrintModal.shouldBe(visible).shouldBe(text(section));
+    }
+
+    public static void closeModal() {
+        closeModal.click();
+        cloudPrintModal.shouldBe(disappear);
+    }
+
+    public static void backClickModal() {
+        backBtn.click();
+        cloudPrintModal.shouldBe(visible).shouldNot(text("Выбор принтера"));
     }
 
     @DataProvider(name="getCloudPrintName")
