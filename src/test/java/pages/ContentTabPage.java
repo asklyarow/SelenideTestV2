@@ -13,12 +13,10 @@ import static com.codeborne.selenide.Selenide.$x;
 public class ContentTabPage {
 
     private static SelenideElement
-            mainTab = $x("//button[@data-testid='main']"),
+
             product = $x("//div[@class='_88Jz246BAesxb4dh8tD5ew==']");
 
-    public static void selectMainTab() {
-        mainTab.shouldBe(visible, Duration.ofSeconds(20)).click();
-    }
+
 
     private static ElementsCollection productList = $$x("//div[@class='_88Jz246BAesxb4dh8tD5ew==']"); //можно посчитать количество артикулов в заказе
 

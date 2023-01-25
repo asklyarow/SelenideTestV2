@@ -59,6 +59,8 @@ public class HeaderTest extends Login {
         ChangeCustomerModal.saveBtn.click();
             ChangeCustomerModal.modalWindow.shouldNot(visible);
             HeaderPage.clientWiget.shouldBe(text("тестИ тестА"));
+
+
             //TODO добавить проверки истории заказа
     }
 }
