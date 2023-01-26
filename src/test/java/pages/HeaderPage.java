@@ -48,12 +48,6 @@ public class HeaderPage {
 
     public static void openChangeCustomerModal() {
         customerNumberIcon.click();
-        ChangeCustomerModal.modalWindow.shouldBe(visible)
-                .shouldBe(text("Укажите клиента"))
-                .shouldBe(text("Укажите значение номера клиента"));
-        ChangeCustomerModal.input.shouldBe(visible);
-        ChangeCustomerModal.cancelBtn.shouldBe(enabled);
-        ChangeCustomerModal.saveBtn.shouldBe(disabled);
     }
 
 }

@@ -12,7 +12,7 @@ public class ChangeCustomerModal {
     public static String invalidCustomerId = "345ffdv";
     public static String validCustomerId = "145955445";
 
-    public static SelenideElement
+    private static SelenideElement
         modalWindow = $x("//div[@data-testid='modal-window']"),
         closeModal = $x("//button[@aria-label='Close modal']"),
         input = $x("//div[@data-testid='modal-window']//input[@data-testid='input-input']"),
@@ -21,12 +21,7 @@ public class ChangeCustomerModal {
 
     public static void setInput (String value) {
         input.setValue(value);
-        if (value==invalidCustomerId) {
-            saveBtn.shouldBe(disabled);
-            modalWindow.shouldBe(text("Номер клиента должен содержать только цифры")); //TODO сделать возможность выбора дев и препрод
-        } else {
-            saveBtn.shouldBe(enabled);
-        }
+
     }
 
     public static void clearFld () {
@@ -37,7 +32,6 @@ public class ChangeCustomerModal {
 
     public static void clickCancelBtn() {
         cancelBtn.click();
-        modalWindow.shouldNot(visible);
     }
 
     public static void clickSaveBtn() {
@@ -49,4 +43,25 @@ public class ChangeCustomerModal {
         //TODO добавить проверку истории заказа
     }
 
+    public static void checkOpenModalWindow(){
+        ChangeCustomerModal.modalWindow.shouldBe(visible)
+                .shouldBe(text("Укажите клиента"))
+                .shouldBe(text("Укажите значение номера клиента"));
+        ChangeCustomerModal.input.shouldBe(visible);
+        ChangeCustomerModal.cancelBtn.shouldBe(enabled);
+        ChangeCustomerModal.saveBtn.shouldBe(disabled);
+    }
+
+    public static void checkValidInput (boolean validCustomerId) {
+        if (validCustomerId) {
+            saveBtn.shouldBe(enabled);
+        } else {
+            saveBtn.shouldBe(disabled);
+            modalWindow.shouldBe(text("Номер клиента должен содержать только цифры")); //TODO сделать возможность выбора дев и препрод
+        }
+    }
+
+    public static void noWindow() {
+        modalWindow.shouldNot(visible);
+    }
 }
